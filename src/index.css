@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-offwhite font-sans text-charcoal antialiased;
+  }
+  html[lang='ar'] body {
+    @apply font-arabic;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-navy;
+    letter-spacing: -0.015em;
+  }
+  html[lang='ar'] h1,
+  html[lang='ar'] h2,
+  html[lang='ar'] h3,
+  html[lang='ar'] h4 {
+    letter-spacing: 0;
+    line-height: 1.35;
+  }
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+  :focus-visible {
+    outline: 2px solid #c8a15a;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-gold-600;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply block h-px w-8 shrink-0 bg-gold;
+  }
+  html[lang='ar'] .eyebrow {
+    @apply text-sm normal-case tracking-normal;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded px-5 py-3 text-sm font-bold transition-colors duration-200;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-navy hover:bg-gold-600 hover:text-white;
+  }
+  .btn-navy {
+    @apply btn bg-navy text-white hover:bg-navy-700;
+  }
+  .btn-outline-light {
+    @apply btn border border-white/60 text-white hover:border-white hover:bg-white hover:text-navy;
+  }
+  .btn-outline {
+    @apply btn border border-navy/25 text-navy hover:border-navy hover:bg-navy hover:text-white;
+  }
+  .btn-whatsapp {
+    @apply btn bg-whatsapp text-[#0B3B1F] hover:bg-[#1EBE5A];
+  }
+
+  /* Eight-point star line pattern (khatam), drawn behind content at low opacity */
+  .pattern-star,
+  .pattern-star-navy {
+    position: relative;
+    isolation: isolate;
+  }
+  .pattern-star::before,
+  .pattern-star-navy::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-size: 96px 96px;
+  }
+  .pattern-star::before {
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23C8A15A' stroke-width='1.2'%3E%3Crect x='18' y='18' width='28' height='28'/%3E%3Crect x='18' y='18' width='28' height='28' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .pattern-star-navy::before {
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%2314213D' stroke-width='1.2'%3E%3Crect x='18' y='18' width='28' height='28'/%3E%3Crect x='18' y='18' width='28' height='28' transform='rotate(45 32 32)'/%3E%3Ccircle cx='32' cy='32' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Gentle zoom on card photos */
+  .img-zoom {
+    overflow: hidden;
+  }
+  .img-zoom img {
+    transition: transform 0.5s ease;
+  }
+  .group:hover .img-zoom img {
+    transform: scale(1.04);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .group:hover .img-zoom img {
+      transform: none;
+    }
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Directional arrows point the right way in Arabic */
+  html[dir='rtl'] .flip-rtl {
+    transform: scaleX(-1);
+  }
+
+  /* Fade-in on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
