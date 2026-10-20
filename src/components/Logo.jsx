@@ -5,7 +5,7 @@ export default function Logo({ light = false }) {
   const { t, lang } = useLang()
   return (
     <span className="flex items-center gap-2.5 sm:gap-3">
-      <img src="/logo-mark.png" alt="" width="234" height="129" className="h-9 w-auto shrink-0 sm:h-10" />
+      <img src="/logo-mark.png" alt="" width="234" height="209" className="h-11 w-auto shrink-0 sm:h-12" />
       <span className="whitespace-nowrap leading-tight">
         <span
           className={`block font-extrabold ${
