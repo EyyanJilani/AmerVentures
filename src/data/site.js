@@ -38,11 +38,11 @@ export const STATS = [
   { key: 'contact', value: '1' },
 ]
 
-// Replace the "#" links with your real profiles.
+// Profiles left as '#' are hidden in the footer until a link is added.
 export const SOCIAL = {
+  instagram: 'https://www.instagram.com/ventureamer',
+  facebook: 'https://www.facebook.com/share/1SpyUpcvPx/',
   linkedin: '#',
-  instagram: '#',
-  facebook: '#',
   tiktok: '#',
 }
 

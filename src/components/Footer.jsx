@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { MapPin, Phone, Mail } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
 import { CONTACT, LICENSE, SOCIAL } from '../data/site'
-import Logo from './Logo'
 import BrandIcon from './BrandIcons'
 
 const SOCIAL_LABELS = { linkedin: 'LinkedIn', instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok' }
@@ -13,16 +12,20 @@ export default function Footer() {
     <footer className="bg-navy-900 text-white/75">
       <div className="container grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
-          <Logo light />
+          <img src="/logo-light.png" alt={t.brand.name} width="244" height="217" loading="lazy" className="h-28 w-auto" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed">{t.footer.about}</p>
           <p className="mb-3 mt-7 text-xs font-bold uppercase tracking-wider text-white/50 rtl:normal-case rtl:tracking-normal">
             {t.footer.follow}
           </p>
           <div className="flex gap-2">
-            {Object.entries(SOCIAL).map(([name, href]) => (
+            {Object.entries(SOCIAL)
+              .filter(([, href]) => href && href !== '#')
+              .map(([name, href]) => (
               <a
                 key={name}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={SOCIAL_LABELS[name]}
                 className="flex h-9 w-9 items-center justify-center rounded border border-white/15 text-white/80 transition-colors hover:border-gold hover:text-gold"
               >
