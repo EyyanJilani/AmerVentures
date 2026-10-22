@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Phone, BadgeCheck, Clock, MonitorSmartphone, FileText } from 'lucide-react'
 import { useLang, useSeo } from '../i18n/LanguageContext'
-import { CONTACT, LICENSE, SERVICE_KEYS, STATS, img, waLink } from '../data/site'
+import { CALL_PHONE, CONTACT, LICENSE, SERVICE_KEYS, STATS, img, waLink } from '../data/site'
 import { SERVICE_ICONS } from '../data/icons'
 import BrandIcon from '../components/BrandIcons'
+import PhoneLink from '../components/PhoneLink'
 import Reveal from '../components/Reveal'
 import CtaBand from '../components/CtaBand'
 
@@ -36,7 +37,7 @@ function Hero() {
               {h.quote}
               <ArrowRight className="flip-rtl h-4 w-4" />
             </Link>
-            <a href={`tel:${CONTACT.phones[0].tel}`} className="btn-outline-light px-6 py-3.5">
+            <a href={`tel:${CALL_PHONE.tel}`} className="btn-outline-light px-6 py-3.5">
               <Phone className="h-4 w-4" strokeWidth={1.75} />
               {h.call}
             </a>
@@ -88,9 +89,7 @@ function Hero() {
         <div className="container flex flex-wrap items-center gap-x-6 gap-y-1 py-4 text-sm text-white/75">
           <span className="font-semibold text-gold">{h.line}</span>
           {CONTACT.phones.slice(0, 2).map((p) => (
-            <a key={p.tel} href={`tel:${p.tel}`} dir="ltr" className="hover:text-white">
-              {p.display}
-            </a>
+            <PhoneLink key={p.tel} phone={p} className="hover:text-white" />
           ))}
           <a href={`mailto:${CONTACT.email}`} className="hover:text-white">
             {CONTACT.email}

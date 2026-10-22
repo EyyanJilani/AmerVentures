@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
 import { CONTACT, LICENSE, SOCIAL } from '../data/site'
 import BrandIcon from './BrandIcons'
+import PhoneLink from './PhoneLink'
 
 const SOCIAL_LABELS = { linkedin: 'LinkedIn', instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok' }
 
@@ -56,9 +57,7 @@ export default function Footer() {
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" strokeWidth={1.75} />
               <span className="flex flex-wrap gap-x-4 gap-y-1">
                 {CONTACT.phones.map((p) => (
-                  <a key={p.tel} href={`tel:${p.tel}`} dir="ltr" className="hover:text-gold">
-                    {p.display}
-                  </a>
+                  <PhoneLink key={p.tel} phone={p} className="hover:text-gold" />
                 ))}
               </span>
             </li>

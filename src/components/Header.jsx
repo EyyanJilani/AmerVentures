@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X, Phone } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
-import { CONTACT } from '../data/site'
+import { CALL_PHONE, CONTACT } from '../data/site'
+import BrandIcon from './BrandIcons'
 import Logo from './Logo'
 
 const NAV = [
@@ -112,9 +113,13 @@ export default function Header() {
               <Link to="/about-contact#contact" className="btn-navy">
                 {t.nav.quote}
               </Link>
-              <a href={`tel:${CONTACT.phones[0].tel}`} className="btn-outline">
-                <Phone className="h-4 w-4" />
+              <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
+                <BrandIcon name="whatsapp" className="h-4 w-4" />
                 <span dir="ltr">{CONTACT.phones[0].display}</span>
+              </a>
+              <a href={`tel:${CALL_PHONE.tel}`} className="btn-outline">
+                <Phone className="h-4 w-4" />
+                <span dir="ltr">{CALL_PHONE.display}</span>
               </a>
             </div>
           </nav>

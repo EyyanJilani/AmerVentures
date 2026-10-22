@@ -1,6 +1,7 @@
 import { BadgeCheck, Mail, Phone } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
-import { CONTACT, LICENSE } from '../data/site'
+import { CALL_PHONE, CONTACT, LICENSE } from '../data/site'
+import PhoneLink from './PhoneLink'
 
 // Thin info strip above the sticky header (desktop only).
 export default function TopBar() {
@@ -13,9 +14,10 @@ export default function TopBar() {
           {t.topbar.license} <span dir="ltr" className="font-sans font-semibold text-white/90">{LICENSE.number}</span>
         </p>
         <div className="flex items-center gap-6">
-          <a href={`tel:${CONTACT.phones[0].tel}`} className="flex items-center gap-2 hover:text-gold">
+          <PhoneLink phone={CONTACT.phones[0]} className="gap-2 hover:text-gold" />
+          <a href={`tel:${CALL_PHONE.tel}`} className="flex items-center gap-2 hover:text-gold">
             <Phone className="h-3.5 w-3.5 text-gold" strokeWidth={1.75} />
-            <span dir="ltr">{CONTACT.phones[0].display}</span>
+            <span dir="ltr">{CALL_PHONE.display}</span>
           </a>
           <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-gold">
             <Mail className="h-3.5 w-3.5 text-gold" strokeWidth={1.75} />

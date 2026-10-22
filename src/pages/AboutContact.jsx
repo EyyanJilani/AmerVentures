@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, ScrollText, Handshake, Award, CircleCheck, Loader2
 import { useLang, useSeo } from '../i18n/LanguageContext'
 import { CONTACT, LICENSE, SERVICE_KEYS, img, waLink } from '../data/site'
 import BrandIcon from '../components/BrandIcons'
+import PhoneLink from '../components/PhoneLink'
 import Reveal from '../components/Reveal'
 
 const VALUE_ICONS = [ScrollText, Handshake, Award]
@@ -275,9 +276,7 @@ export default function AboutContact() {
                     <ul className="mt-1 space-y-1">
                       {CONTACT.phones.map((p) => (
                         <li key={p.tel}>
-                          <a href={`tel:${p.tel}`} dir="ltr" className="hover:text-gold">
-                            {p.display}
-                          </a>
+                          <PhoneLink phone={p} className="hover:text-gold" />
                         </li>
                       ))}
                     </ul>

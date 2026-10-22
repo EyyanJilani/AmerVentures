@@ -12,7 +12,7 @@ export const LICENSE = {
 // Phone numbers and email are not on the license.
 export const CONTACT = {
   phones: [
-    { display: '+971 50 906 9414', tel: '+971509069414' },
+    { display: '+971 50 906 9414', tel: '+971509069414', whatsapp: true },
     { display: '+971 56 270 8802', tel: '+971562708802' },
   ],
   whatsapp: '971509069414',
@@ -56,6 +56,9 @@ export const IMAGES = {
 
 // Order of services on the Services page (keys match translations).
 export const SERVICE_KEYS = ['government', 'clearing', 'attestation', 'verification', 'manpower', 'banking']
+
+// Number used for phone calls (the WhatsApp number opens a chat instead).
+export const CALL_PHONE = CONTACT.phones.find((p) => !p.whatsapp) || CONTACT.phones[0]
 
 export const waLink = (message) =>
   `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`

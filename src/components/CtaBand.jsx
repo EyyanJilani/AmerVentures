@@ -1,6 +1,6 @@
 import { Phone } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
-import { CONTACT, waLink } from '../data/site'
+import { CALL_PHONE, waLink } from '../data/site'
 import BrandIcon from './BrandIcons'
 import Reveal from './Reveal'
 
@@ -18,9 +18,9 @@ export default function CtaBand() {
             <BrandIcon name="whatsapp" className="h-5 w-5 text-whatsapp" />
             {t.cta.whatsapp}
           </a>
-          <a href={`tel:${CONTACT.phones[0].tel}`} className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:underline">
+          <a href={`tel:${CALL_PHONE.tel}`} className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:underline">
             <Phone className="h-4 w-4" strokeWidth={1.75} />
-            {t.cta.or} <span dir="ltr">{CONTACT.phones[0].display}</span>
+            {t.cta.or} <span dir="ltr">{CALL_PHONE.display}</span>
           </a>
         </div>
       </Reveal>
