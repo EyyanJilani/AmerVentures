@@ -20,6 +20,10 @@ export const CONTACT = {
   mapQuery: 'Meydan Grandstand, Meydan Road, Nad Al Sheba, Dubai',
 }
 
+// Real client reviews to show on the Home page (hidden while empty).
+// Example: { name: 'Ahmed K.', service: 'government', rating: 5, text: 'Visa paperwork done in two days.' }
+export const REVIEWS = []
+
 export const STATS = [
   { key: 'established', value: '2024' },
   { key: 'activities', value: '8' },

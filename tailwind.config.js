@@ -9,13 +9,15 @@ export default {
     },
     extend: {
       colors: {
-        navy: { DEFAULT: '#14213D', 900: '#0E182E', 700: '#22325A' },
-        gold: { DEFAULT: '#C8A15A', 600: '#B08A44', 100: '#F1E7D3' },
-        sand: '#EDE6D8',
-        offwhite: '#F7F5F0',
-        charcoal: '#2A2D34',
-        muted: '#5F6470',
-        line: '#E3DED3',
+        // Blue: primary brand colour (text, dark sections, buttons)
+        brand: { DEFAULT: '#0B4F8C', 900: '#073763', 700: '#1766B3' },
+        // Light green: accents (600 is the darker shade for text on white)
+        accent: { DEFAULT: '#8EDBA9', 600: '#1F8A52', 100: '#E5F7EC' },
+        sand: '#E6F0F9',
+        offwhite: '#F4F8FC',
+        charcoal: '#22303F',
+        muted: '#5B6878',
+        line: '#DCE6EF',
         whatsapp: '#25D366',
       },
       fontFamily: {

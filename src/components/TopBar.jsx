@@ -7,20 +7,20 @@ import PhoneLink from './PhoneLink'
 export default function TopBar() {
   const { t } = useLang()
   return (
-    <div className="hidden bg-navy-900 text-xs text-white/70 lg:block">
+    <div className="hidden bg-brand-900 text-xs text-white/70 lg:block">
       <div className="container flex h-9 items-center justify-between gap-6">
         <p className="flex items-center gap-2">
-          <BadgeCheck className="h-3.5 w-3.5 text-gold" strokeWidth={1.75} />
+          <BadgeCheck className="h-3.5 w-3.5 text-accent" strokeWidth={1.75} />
           {t.topbar.license} <span dir="ltr" className="font-sans font-semibold text-white/90">{LICENSE.number}</span>
         </p>
         <div className="flex items-center gap-6">
-          <PhoneLink phone={CONTACT.phones[0]} className="gap-2 hover:text-gold" />
-          <a href={`tel:${CALL_PHONE.tel}`} className="flex items-center gap-2 hover:text-gold">
-            <Phone className="h-3.5 w-3.5 text-gold" strokeWidth={1.75} />
+          <PhoneLink phone={CONTACT.phones[0]} className="gap-2 hover:text-accent" />
+          <a href={`tel:${CALL_PHONE.tel}`} className="flex items-center gap-2 hover:text-accent">
+            <Phone className="h-3.5 w-3.5 text-accent" strokeWidth={1.75} />
             <span dir="ltr">{CALL_PHONE.display}</span>
           </a>
-          <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-gold">
-            <Mail className="h-3.5 w-3.5 text-gold" strokeWidth={1.75} />
+          <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-accent">
+            <Mail className="h-3.5 w-3.5 text-accent" strokeWidth={1.75} />
             {CONTACT.email}
           </a>
         </div>

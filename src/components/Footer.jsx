@@ -10,7 +10,7 @@ const SOCIAL_LABELS = { linkedin: 'LinkedIn', instagram: 'Instagram', facebook: 
 export default function Footer() {
   const { t } = useLang()
   return (
-    <footer className="bg-navy-900 text-white/75">
+    <footer className="bg-brand-900 text-white/75">
       <div className="container grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <img src="/logo-light.png" alt={t.brand.name} width="244" height="217" loading="lazy" className="h-28 w-auto" />
@@ -28,7 +28,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={SOCIAL_LABELS[name]}
-                className="flex h-9 w-9 items-center justify-center rounded border border-white/15 text-white/80 transition-colors hover:border-gold hover:text-gold"
+                className="flex h-9 w-9 items-center justify-center rounded border border-white/15 text-white/80 transition-colors hover:border-accent hover:text-accent"
               >
                 <BrandIcon name={name} />
               </a>
@@ -39,10 +39,10 @@ export default function Footer() {
         <div className="lg:col-span-3 lg:ps-8">
           <h2 className="mb-4 text-sm font-bold text-white">{t.footer.links}</h2>
           <ul className="space-y-2.5 text-sm">
-            <li><Link className="hover:text-gold" to="/">{t.nav.home}</Link></li>
-            <li><Link className="hover:text-gold" to="/services">{t.nav.services}</Link></li>
-            <li><Link className="hover:text-gold" to="/about-contact">{t.nav.about}</Link></li>
-            <li><Link className="hover:text-gold" to="/about-contact#contact">{t.nav.quote}</Link></li>
+            <li><Link className="hover:text-accent" to="/">{t.nav.home}</Link></li>
+            <li><Link className="hover:text-accent" to="/services">{t.nav.services}</Link></li>
+            <li><Link className="hover:text-accent" to="/about-contact">{t.nav.about}</Link></li>
+            <li><Link className="hover:text-accent" to="/about-contact#contact">{t.nav.quote}</Link></li>
           </ul>
         </div>
 
@@ -50,20 +50,20 @@ export default function Footer() {
           <h2 className="mb-4 text-sm font-bold text-white">{t.footer.contact}</h2>
           <ul className="space-y-3 text-sm">
             <li className="flex gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" strokeWidth={1.75} />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.75} />
               <span>{t.contact.details.address}</span>
             </li>
             <li className="flex gap-3">
-              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" strokeWidth={1.75} />
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.75} />
               <span className="flex flex-wrap gap-x-4 gap-y-1">
                 {CONTACT.phones.map((p) => (
-                  <PhoneLink key={p.tel} phone={p} className="hover:text-gold" />
+                  <PhoneLink key={p.tel} phone={p} className="hover:text-accent" />
                 ))}
               </span>
             </li>
             <li className="flex gap-3">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" strokeWidth={1.75} />
-              <a href={`mailto:${CONTACT.email}`} className="hover:text-gold">{CONTACT.email}</a>
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" strokeWidth={1.75} />
+              <a href={`mailto:${CONTACT.email}`} className="hover:text-accent">{CONTACT.email}</a>
             </li>
           </ul>
         </div>
@@ -86,7 +86,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               dir="ltr"
-              className="font-semibold text-white/60 hover:text-gold"
+              className="font-semibold text-white/60 hover:text-accent"
             >
               begintech.co
             </a>

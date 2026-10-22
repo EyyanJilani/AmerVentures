@@ -10,11 +10,11 @@ export default function Logo({ light = false }) {
         <span
           className={`block font-extrabold ${
             lang === 'en' ? 'font-sans text-[14px] uppercase tracking-[0.08em] sm:text-[15px]' : 'text-[16px] sm:text-[17px]'
-          } ${light ? 'text-white' : 'text-navy'}`}
+          } ${light ? 'text-white' : 'text-brand'}`}
         >
           {t.brand.name}
         </span>
-        <span className={`block text-[10px] font-semibold sm:text-[11px] ${light ? 'text-gold' : 'text-gold-600'}`}>
+        <span className={`block text-[10px] font-semibold sm:text-[11px] ${light ? 'text-accent' : 'text-accent-600'}`}>
           {t.brand.tagline}
         </span>
       </span>

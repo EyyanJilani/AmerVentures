@@ -22,14 +22,14 @@ function LicenseCard() {
   return (
     <div className="mt-10 rounded border border-line bg-white p-7">
       <div className="flex items-center gap-3">
-        <BadgeCheck className="h-6 w-6 text-gold-600" strokeWidth={1.5} />
+        <BadgeCheck className="h-6 w-6 text-accent-600" strokeWidth={1.5} />
         <h3 className="text-lg font-extrabold">{l.title}</h3>
       </div>
       <dl className="mt-5 divide-y divide-line text-sm">
         {rows.map(([label, value, ltr]) => (
           <div key={label} className="flex justify-between gap-4 py-2.5">
             <dt className="shrink-0 text-muted">{label}</dt>
-            <dd className="text-end font-semibold text-navy">
+            <dd className="text-end font-semibold text-brand">
               {ltr ? <span dir="ltr">{value}</span> : value}
             </dd>
           </div>
@@ -54,7 +54,7 @@ function validate(values) {
 function Field({ id, label, error, children }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-bold text-navy">
+      <label htmlFor={id} className="mb-1.5 block text-sm font-bold text-brand">
         {label}
       </label>
       {children}
@@ -99,7 +99,7 @@ function ContactForm() {
   }
 
   const input = (name) =>
-    `w-full rounded border bg-white px-4 py-3 text-[15px] text-charcoal outline-none transition-colors focus:border-navy ${
+    `w-full rounded border bg-white px-4 py-3 text-[15px] text-charcoal outline-none transition-colors focus:border-brand ${
       errors[name] ? 'border-red-600' : 'border-line'
     }`
 
@@ -111,7 +111,7 @@ function ContactForm() {
   if (status === 'sent') {
     return (
       <div role="status" className="flex h-full flex-col items-start justify-center rounded border border-line bg-white p-8 md:p-10">
-        <CircleCheck className="h-10 w-10 text-gold-600" strokeWidth={1.5} />
+        <CircleCheck className="h-10 w-10 text-accent-600" strokeWidth={1.5} />
         <h3 className="mt-5 text-2xl font-extrabold">{f.successTitle}</h3>
         <p className="mt-2 text-muted">{f.success.replace('{name}', sentName)}</p>
         <button type="button" onClick={() => setStatus('idle')} className="btn-outline mt-7">
@@ -179,7 +179,7 @@ function ContactForm() {
         </Field>
       </div>
       <div className="md:col-span-2">
-        <button type="submit" disabled={status === 'sending'} className="btn-navy w-full px-8 py-3.5 disabled:opacity-70 sm:w-auto">
+        <button type="submit" disabled={status === 'sending'} className="btn-brand w-full px-8 py-3.5 disabled:opacity-70 sm:w-auto">
           {status === 'sending' && <Loader2 className="h-4 w-4 animate-spin" />}
           {status === 'sending' ? f.sending : f.submit}
         </button>
@@ -198,11 +198,11 @@ export default function AboutContact() {
   return (
     <>
       {/* Page banner */}
-      <section className="relative isolate overflow-hidden bg-navy">
+      <section className="relative isolate overflow-hidden bg-brand">
         <img src={img('about', 1920)} alt={a.heroAlt} className="absolute inset-0 -z-10 h-full w-full object-cover" />
-        <div className="absolute inset-0 -z-10 bg-navy-900/75" />
+        <div className="absolute inset-0 -z-10 bg-brand-900/75" />
         <div className="container py-20 md:py-28">
-          <p className="eyebrow text-gold">{a.eyebrow}</p>
+          <p className="eyebrow text-accent">{a.eyebrow}</p>
           <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.1] text-white md:text-[52px]">{a.title}</h1>
         </div>
       </section>
@@ -224,8 +224,8 @@ export default function AboutContact() {
             <LicenseCard />
           </Reveal>
           <Reveal delay={120} className="lg:col-span-5 lg:pt-14">
-            <figure className="pattern-star overflow-hidden rounded bg-navy p-8 text-white md:p-10">
-              <figcaption className="eyebrow text-gold">{a.mission.label}</figcaption>
+            <figure className="pattern-star overflow-hidden rounded bg-brand p-8 text-white md:p-10">
+              <figcaption className="eyebrow text-accent">{a.mission.label}</figcaption>
               <blockquote className="mt-5 text-xl font-semibold leading-relaxed md:text-2xl">{a.mission.text}</blockquote>
             </figure>
             <ul className="mt-10 space-y-8">
@@ -233,7 +233,7 @@ export default function AboutContact() {
                 const Icon = VALUE_ICONS[idx]
                 return (
                   <li key={v.title} className="flex gap-5 border-b border-line pb-8 last:border-0">
-                    <Icon className="h-7 w-7 shrink-0 text-gold-600" strokeWidth={1.5} />
+                    <Icon className="h-7 w-7 shrink-0 text-accent-600" strokeWidth={1.5} />
                     <div>
                       <h3 className="text-lg font-extrabold">{v.title}</h3>
                       <p className="mt-1 text-muted">{v.body}</p>
@@ -261,32 +261,32 @@ export default function AboutContact() {
             </Reveal>
 
             <Reveal delay={100} as="aside" className="lg:col-span-5">
-              <div className="space-y-7 rounded bg-navy p-7 text-white/80 md:p-9">
+              <div className="space-y-7 rounded bg-brand p-7 text-white/80 md:p-9">
                 <div className="flex gap-4">
-                  <MapPin className="mt-1 h-5 w-5 shrink-0 text-gold" strokeWidth={1.75} />
+                  <MapPin className="mt-1 h-5 w-5 shrink-0 text-accent" strokeWidth={1.75} />
                   <div>
                     <h3 className="font-bold text-white">{d.title}</h3>
                     <p className="mt-1 leading-relaxed">{d.address}</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <Phone className="mt-1 h-5 w-5 shrink-0 text-gold" strokeWidth={1.75} />
+                  <Phone className="mt-1 h-5 w-5 shrink-0 text-accent" strokeWidth={1.75} />
                   <div>
                     <h3 className="font-bold text-white">{d.phone}</h3>
                     <ul className="mt-1 space-y-1">
                       {CONTACT.phones.map((p) => (
                         <li key={p.tel}>
-                          <PhoneLink phone={p} className="hover:text-gold" />
+                          <PhoneLink phone={p} className="hover:text-accent" />
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <Mail className="mt-1 h-5 w-5 shrink-0 text-gold" strokeWidth={1.75} />
+                  <Mail className="mt-1 h-5 w-5 shrink-0 text-accent" strokeWidth={1.75} />
                   <div>
                     <h3 className="font-bold text-white">{d.email}</h3>
-                    <a href={`mailto:${CONTACT.email}`} className="mt-1 inline-block hover:text-gold">
+                    <a href={`mailto:${CONTACT.email}`} className="mt-1 inline-block hover:text-accent">
                       {CONTACT.email}
                     </a>
                   </div>

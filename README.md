@@ -20,7 +20,8 @@ npm run build    # production files in dist/
 | Stats strip values | `src/data/site.js` → `STATS` |
 | Social media links | `src/data/site.js` → `SOCIAL` |
 | Photos (Unsplash IDs) | `src/data/site.js` → `IMAGES` |
-| Colours and fonts | `tailwind.config.js` |
+| Client reviews shown on Home | `src/data/site.js` → `REVIEWS` |
+| Colours (brand blue, accent light green) and fonts | `tailwind.config.js` |
 
 ## Notes
 

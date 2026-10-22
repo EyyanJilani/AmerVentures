@@ -31,10 +31,10 @@ function ServiceSection({ id, index }) {
 
         <Reveal delay={100} className="lg:col-span-6">
           <div className="flex items-center gap-4">
-            <span className="flex h-12 w-12 items-center justify-center rounded border border-gold/40 bg-gold-100">
-              <Icon className="h-6 w-6 text-navy" strokeWidth={1.5} />
+            <span className="flex h-12 w-12 items-center justify-center rounded border border-accent/40 bg-accent-100">
+              <Icon className="h-6 w-6 text-brand" strokeWidth={1.5} />
             </span>
-            <span dir="ltr" className="font-sans text-sm font-bold text-gold-600">
+            <span dir="ltr" className="font-sans text-sm font-bold text-accent-600">
               {String(index + 1).padStart(2, '0')} / {String(SERVICE_KEYS.length).padStart(2, '0')}
             </span>
           </div>
@@ -43,12 +43,12 @@ function ServiceSection({ id, index }) {
           <ul className="mt-7 grid gap-x-6 gap-y-3 sm:grid-cols-2">
             {svc.items.map((item) => (
               <li key={item} className="flex gap-3 text-[15px]">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" strokeWidth={2.25} />
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-600" strokeWidth={2.25} />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-          <a href={waLink(message)} target="_blank" rel="noopener noreferrer" className="btn-navy mt-9">
+          <a href={waLink(message)} target="_blank" rel="noopener noreferrer" className="btn-brand mt-9">
             <BrandIcon name="whatsapp" className="h-4 w-4 text-whatsapp" />
             {t.servicesPage.request}
           </a>
@@ -65,10 +65,10 @@ export default function Services() {
 
   return (
     <>
-      <section className="pattern-star bg-navy text-white">
+      <section className="pattern-star bg-brand text-white">
         <div className="container grid gap-10 pb-14 pt-16 md:pb-16 md:pt-24 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <p className="eyebrow text-gold">{p.eyebrow}</p>
+            <p className="eyebrow text-accent">{p.eyebrow}</p>
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.1] text-white md:text-[52px]">{p.title}</h1>
             <p className="mt-5 max-w-2xl text-lg text-white/80">{p.sub}</p>
           </div>
@@ -82,7 +82,7 @@ export default function Services() {
               <a
                 key={key}
                 href={`#${key}`}
-                className="shrink-0 rounded border border-white/20 px-3 py-1.5 text-sm font-semibold text-white/85 transition-colors hover:border-gold hover:text-gold"
+                className="shrink-0 rounded border border-white/20 px-3 py-1.5 text-sm font-semibold text-white/85 transition-colors hover:border-accent hover:text-accent"
               >
                 {t.services[key].short}
               </a>
