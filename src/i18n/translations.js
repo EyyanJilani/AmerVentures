@@ -116,10 +116,6 @@ const en = {
     request: 'Request this service',
     activityCode: 'Licensed activity code',
     waMessage: 'Hello Amer Venture, I’d like to request: {service}. Please contact me.',
-    activitiesTitle: 'Licensed activities',
-    activitiesSub: 'As listed on our Meydan Free Zone business license No. 2415626.01.',
-    code: 'Code',
-    activity: 'Activity',
   },
   services: {
     government: {
@@ -405,10 +401,6 @@ const ar = {
     request: 'اطلب هذه الخدمة',
     activityCode: 'رمز النشاط المرخّص',
     waMessage: 'مرحباً عامر فينتشر، أرغب في طلب خدمة: {service}. يرجى التواصل معي.',
-    activitiesTitle: 'الأنشطة المرخّصة',
-    activitiesSub: 'كما وردت في رخصتنا التجارية من ميدان - المنطقة الحرة رقم 2415626.01.',
-    code: 'الرمز',
-    activity: 'النشاط',
   },
   services: {
     government: {
