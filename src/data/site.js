@@ -12,11 +12,10 @@ export const LICENSE = {
 // Phone numbers and email are not on the license.
 export const CONTACT = {
   phones: [
-    { display: '+971 58 602 6045', tel: '+971586026045' },
-    { display: '+971 52 551 4544', tel: '+971525514544' },
-    { display: '+971 4 570 1441', tel: '+97145701441' },
+    { display: '+971 50 906 9414', tel: '+971509069414' },
+    { display: '+971 56 270 8802', tel: '+971562708802' },
   ],
-  whatsapp: '971586026045',
+  whatsapp: '971509069414',
   email: 'info@amerventure.com',
   mapQuery: 'Meydan Grandstand, Meydan Road, Nad Al Sheba, Dubai',
 }
@@ -30,6 +29,18 @@ export const ACTIVITY_CODES = {
   manpower: ['7830.00', '7830.01'],
   banking: ['6612.91'],
 }
+
+// All business activities exactly as they appear on the license.
+export const LICENSED_ACTIVITIES = [
+  { code: '6612.91', en: 'Bank Brokers', ar: 'وسيط بين المصارف' },
+  { code: '7830.00', en: 'Other human resources provision', ar: 'تقديم موارد بشرية أخرى' },
+  { code: '7830.01', en: 'Provision of human resources for client businesses', ar: 'تقديم موارد بشرية لأعمال العملاء' },
+  { code: '8299.85', en: 'Documents Clearing Services', ar: 'خدمات متابعة المعاملات' },
+  { code: '8299.95', en: 'Government Transactions Center', ar: 'مركز إنجاز المعاملات الحكومية' },
+  { code: '8299.96', en: 'Document Verification Followup Services', ar: 'خدمات متابعة تصديق الشهادات والمستندات' },
+  { code: '8299.97', en: 'Documents & Data verification Services', ar: 'خدمات التحقق من صحة المستندات والبيانات' },
+  { code: '8299.98', en: 'Online Government Transactions Processing', ar: 'إنجاز المعاملات الحكومية إلكترونياً' },
+]
 
 export const STATS = [
   { key: 'established', value: '2024' },

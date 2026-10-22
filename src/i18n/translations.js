@@ -31,7 +31,7 @@ const en = {
     about: {
       title: 'About & Contact | Amer Venture L.L.C-FZ, Dubai',
       description:
-        'Amer Venture L.L.C-FZ, Meydan Free Zone License No. 2415626.01. Visit us at Meydan Grandstand, Nad Al Sheba, Dubai, or call +971 58 602 6045.',
+        'Amer Venture L.L.C-FZ, Meydan Free Zone License No. 2415626.01. Visit us at Meydan Grandstand, Nad Al Sheba, Dubai, or call +971 50 906 9414.',
     },
   },
   home: {
@@ -116,6 +116,10 @@ const en = {
     request: 'Request this service',
     activityCode: 'Licensed activity code',
     waMessage: 'Hello Amer Venture, I’d like to request: {service}. Please contact me.',
+    activitiesTitle: 'Licensed activities',
+    activitiesSub: 'As listed on our Meydan Free Zone business license No. 2415626.01.',
+    code: 'Code',
+    activity: 'Activity',
   },
   services: {
     government: {
@@ -147,7 +151,7 @@ const en = {
     },
     attestation: {
       short: 'Attestation Follow-up',
-      title: 'Document Verification Follow-up',
+      title: 'Document Verification Followup Services',
       card: 'Follow-up on the attestation of certificates and documents.',
       body: 'Certificates and official documents often need attestation before they are accepted in the UAE. We track each stage and keep you informed until your documents are ready.',
       items: [
@@ -160,7 +164,7 @@ const en = {
     },
     verification: {
       short: 'Document Verification',
-      title: 'Documents & Data Verification',
+      title: 'Documents & Data Verification Services',
       card: 'Checking documents and data are accurate before they are used.',
       body: 'One wrong detail can delay a transaction by weeks. We check that documents and the data in them are genuine, accurate and consistent, so applications go through the first time.',
       items: [
@@ -172,8 +176,8 @@ const en = {
       alt: 'Man in traditional dress checking details on a tablet',
     },
     manpower: {
-      short: 'Manpower Supply',
-      title: 'Human Resources Provision',
+      short: 'Human Resources',
+      title: 'Provision of Human Resources for Client Businesses',
       card: 'Staff provided to client businesses on long-term arrangements.',
       body: 'We provide human resources to client businesses, usually on a long-term or permanent basis, and take on the personnel management duties that come with it.',
       items: [
@@ -185,8 +189,8 @@ const en = {
       alt: 'Recruiter in hijab holding a video interview on her laptop',
     },
     banking: {
-      short: 'Bank Brokerage',
-      title: 'Bank Brokerage Services',
+      short: 'Bank Brokers',
+      title: 'Bank Brokers',
       card: 'We connect clients with UAE banks and handle the paperwork.',
       body: 'We act as the link between our clients and banks in the UAE: preparing the documents banks ask for and following up until your request is processed. Decisions on accounts and products stay with the bank.',
       items: [
@@ -316,7 +320,7 @@ const ar = {
     about: {
       title: 'من نحن والتواصل | عامر فينتشر ش.ذ.م.م - منطقة حرة، دبي',
       description:
-        'عامر فينتشر ش.ذ.م.م - منطقة حرة، رخصة ميدان - المنطقة الحرة رقم 2415626.01. تفضّل بزيارتنا في ميدان جراند ستاند، ند الشبا، دبي، أو اتصل على ‎+971 58 602 6045.',
+        'عامر فينتشر ش.ذ.م.م - منطقة حرة، رخصة ميدان - المنطقة الحرة رقم 2415626.01. تفضّل بزيارتنا في ميدان جراند ستاند، ند الشبا، دبي، أو اتصل على ‎+971 50 906 9414.',
     },
   },
   home: {
@@ -401,6 +405,10 @@ const ar = {
     request: 'اطلب هذه الخدمة',
     activityCode: 'رمز النشاط المرخّص',
     waMessage: 'مرحباً عامر فينتشر، أرغب في طلب خدمة: {service}. يرجى التواصل معي.',
+    activitiesTitle: 'الأنشطة المرخّصة',
+    activitiesSub: 'كما وردت في رخصتنا التجارية من ميدان - المنطقة الحرة رقم 2415626.01.',
+    code: 'الرمز',
+    activity: 'النشاط',
   },
   services: {
     government: {
@@ -458,7 +466,7 @@ const ar = {
     },
     manpower: {
       short: 'الموارد البشرية',
-      title: 'تقديم الموارد البشرية',
+      title: 'تقديم موارد بشرية لأعمال العملاء',
       card: 'توفير كوادر لأعمال العملاء بعقود طويلة الأجل.',
       body: 'نوفّر الموارد البشرية لأعمال العملاء، غالباً على أساس طويل الأجل أو دائم، ونتولى مهام إدارة شؤون الموظفين المرتبطة بذلك.',
       items: [
@@ -470,8 +478,8 @@ const ar = {
       alt: 'مسؤولة توظيف محجبة تجري مقابلة عبر الحاسوب المحمول',
     },
     banking: {
-      short: 'الوساطة المصرفية',
-      title: 'خدمات الوساطة بين المصارف',
+      short: 'وسيط بين المصارف',
+      title: 'وسيط بين المصارف',
       card: 'نربطك بالبنوك في الإمارات ونتولى الإجراءات الورقية.',
       body: 'نعمل حلقة وصل بين عملائنا والبنوك في الإمارات، فنجهّز المستندات التي تطلبها البنوك ونتابع الطلب حتى تتم معالجته. ويبقى قرار فتح الحسابات أو تقديم المنتجات بيد البنك.',
       items: [

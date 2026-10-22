@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react'
 import { useLang, useSeo } from '../i18n/LanguageContext'
-import { ACTIVITY_CODES, SERVICE_KEYS, img, waLink } from '../data/site'
+import { ACTIVITY_CODES, LICENSED_ACTIVITIES, SERVICE_KEYS, img, waLink } from '../data/site'
 import { SERVICE_ICONS } from '../data/icons'
 import BrandIcon from '../components/BrandIcons'
 import Reveal from '../components/Reveal'
@@ -66,6 +66,43 @@ function ServiceSection({ id, index }) {
   )
 }
 
+// Every activity on the business license, with its official code and wording.
+function LicensedActivities() {
+  const { t, lang } = useLang()
+  const p = t.servicesPage
+  return (
+    <section id="activities" className="border-t border-line bg-white py-16 md:py-20">
+      <div className="container grid gap-10 lg:grid-cols-12">
+        <Reveal className="lg:col-span-4">
+          <p className="eyebrow">{t.aboutPage.license.title}</p>
+          <h2 className="mt-4 text-3xl font-extrabold">{p.activitiesTitle}</h2>
+          <p className="mt-3 text-muted">{p.activitiesSub}</p>
+        </Reveal>
+        <Reveal delay={100} className="lg:col-span-8">
+          <table className="w-full text-start text-[15px]">
+            <thead>
+              <tr className="border-b-2 border-navy text-xs font-bold uppercase tracking-wider text-muted rtl:normal-case rtl:tracking-normal">
+                <th scope="col" className="w-24 py-3 text-start">{p.code}</th>
+                <th scope="col" className="py-3 text-start">{p.activity}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {LICENSED_ACTIVITIES.map((a) => (
+                <tr key={a.code} className="border-b border-line">
+                  <td className="py-3 align-top font-sans font-bold text-gold-600">
+                    <span dir="ltr">{a.code}</span>
+                  </td>
+                  <td className="py-3 font-semibold text-navy">{a[lang]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
 export default function Services() {
   useSeo('services')
   const { t } = useLang()
@@ -102,6 +139,8 @@ export default function Services() {
       {SERVICE_KEYS.map((key, i) => (
         <ServiceSection key={key} id={key} index={i} />
       ))}
+
+      <LicensedActivities />
 
       <CtaBand />
     </>
