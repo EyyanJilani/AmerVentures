@@ -114,7 +114,6 @@ const en = {
     sub: 'Every service below is a licensed activity under our Meydan Free Zone license. Take one, or combine several under one agreement.',
     jump: 'Jump to',
     request: 'Request this service',
-    activityCode: 'Licensed activity code',
     waMessage: 'Hello Amer Venture, I’d like to request: {service}. Please contact me.',
   },
   services: {
@@ -399,7 +398,6 @@ const ar = {
     sub: 'جميع الخدمات أدناه أنشطة مرخّصة ضمن رخصتنا في ميدان - المنطقة الحرة. اختر خدمة واحدة أو اجمع عدة خدمات في اتفاقية واحدة.',
     jump: 'انتقل إلى',
     request: 'اطلب هذه الخدمة',
-    activityCode: 'رمز النشاط المرخّص',
     waMessage: 'مرحباً عامر فينتشر، أرغب في طلب خدمة: {service}. يرجى التواصل معي.',
   },
   services: {

@@ -16,7 +16,6 @@ npm run build    # production files in dist/
 | --- | --- |
 | All text, English + Arabic (incl. page titles and meta descriptions) | `src/i18n/translations.js` |
 | License details (number, dates) | `src/data/site.js` → `LICENSE` |
-| Activity codes shown per service | `src/data/site.js` → `ACTIVITY_CODES` |
 | Phone numbers, email, WhatsApp number, map location | `src/data/site.js` → `CONTACT` |
 | Stats strip values | `src/data/site.js` → `STATS` |
 | Social media links | `src/data/site.js` → `SOCIAL` |

@@ -20,16 +20,6 @@ export const CONTACT = {
   mapQuery: 'Meydan Grandstand, Meydan Road, Nad Al Sheba, Dubai',
 }
 
-// Activity codes for each service, as listed on the license.
-export const ACTIVITY_CODES = {
-  government: ['8299.95', '8299.98'],
-  clearing: ['8299.85'],
-  attestation: ['8299.96'],
-  verification: ['8299.97'],
-  manpower: ['7830.00', '7830.01'],
-  banking: ['6612.91'],
-}
-
 export const STATS = [
   { key: 'established', value: '2024' },
   { key: 'activities', value: '8' },

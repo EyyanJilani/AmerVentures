@@ -1,6 +1,6 @@
 import { Check } from 'lucide-react'
 import { useLang, useSeo } from '../i18n/LanguageContext'
-import { ACTIVITY_CODES, SERVICE_KEYS, img, waLink } from '../data/site'
+import { SERVICE_KEYS, img, waLink } from '../data/site'
 import { SERVICE_ICONS } from '../data/icons'
 import BrandIcon from '../components/BrandIcons'
 import Reveal from '../components/Reveal'
@@ -48,18 +48,10 @@ function ServiceSection({ id, index }) {
               </li>
             ))}
           </ul>
-          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a href={waLink(message)} target="_blank" rel="noopener noreferrer" className="btn-navy">
-              <BrandIcon name="whatsapp" className="h-4 w-4 text-whatsapp" />
-              {t.servicesPage.request}
-            </a>
-            <p className="text-xs text-muted">
-              {t.servicesPage.activityCode}:{' '}
-              <span dir="ltr" className="font-sans font-bold text-navy">
-                {ACTIVITY_CODES[id].join(' · ')}
-              </span>
-            </p>
-          </div>
+          <a href={waLink(message)} target="_blank" rel="noopener noreferrer" className="btn-navy mt-9">
+            <BrandIcon name="whatsapp" className="h-4 w-4 text-whatsapp" />
+            {t.servicesPage.request}
+          </a>
         </Reveal>
       </div>
     </section>
