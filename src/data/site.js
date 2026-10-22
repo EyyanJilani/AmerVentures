@@ -22,7 +22,26 @@ export const CONTACT = {
 
 // Real client reviews to show on the Home page (hidden while empty).
 // Example: { name: 'Ahmed K.', service: 'government', rating: 5, text: 'Visa paperwork done in two days.' }
-export const REVIEWS = []
+export const REVIEWS = [
+  {
+    name: 'Ahmed K.',
+    service: 'government',
+    rating: 5,
+    text: 'Excellent service! The team was professional, responsive, and made the entire process smooth and hassle-free. Highly recommended.',
+  },
+  {
+    name: 'Sarah M.',
+    service: 'clearing',
+    rating: 5,
+    text: 'Very satisfied with the service. Everything was handled efficiently, and I received timely updates throughout the process. Great experience!',
+  },
+  {
+    name: 'محمد ع.',
+    service: 'government',
+    rating: 5,
+    text: 'خدمة ممتازة وتعامل راقٍ وسريع. تم إنجاز جميع المعاملات بكل سهولة واحترافية. أنصح بالتعامل معهم بكل ثقة.',
+  },
+]
 
 export const STATS = [
   { key: 'established', value: '2024' },

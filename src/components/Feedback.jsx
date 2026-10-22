@@ -26,8 +26,8 @@ function ReviewList() {
         {REVIEWS.map((r, idx) => (
           <Reveal as="li" key={`${r.name}-${idx}`} delay={idx * 80} className="rounded border border-line bg-white p-6">
             <Stars value={r.rating} />
-            <p className="mt-4 leading-relaxed text-charcoal">“{r.text}”</p>
-            <p className="mt-4 text-sm font-bold text-brand">{r.name}</p>
+            <p dir="auto" className="mt-4 leading-relaxed text-charcoal">“{r.text}”</p>
+            <p dir="auto" className="mt-4 text-sm font-bold text-brand">{r.name}</p>
             {r.service && <p className="text-xs text-muted">{t.services[r.service]?.short || r.service}</p>}
           </Reveal>
         ))}
