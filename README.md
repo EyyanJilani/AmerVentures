@@ -31,3 +31,19 @@ npm run build    # production files in dist/
 - Uses client-side routing. `public/_redirects` (Netlify) and `vercel.json` (Vercel) are included so
   `/services` and `/about-contact` work on refresh. On other hosts, rewrite all paths to `index.html`.
 - Photos are hot-linked from Unsplash (free licence). For production you can download them into `public/`.
+
+## Client reviews
+
+- Visitors post reviews from the Home page. They are saved by the Vercel function `api/reviews.js`
+  in an Upstash Redis database and appear on the site straight away.
+- Setup (once): Vercel project → **Storage** → **Create Database** → **Upstash for Redis** → connect it
+  to this project, then redeploy. Vercel adds `KV_REST_API_URL` and `KV_REST_API_TOKEN` automatically.
+- Optional: add an environment variable `REVIEWS_ADMIN_KEY` (any long secret) to be able to delete a review:
+
+  ```bash
+  curl -X DELETE "https://amerventures.begintech.co/api/reviews?id=REVIEW_ID" -H "x-admin-key: YOUR_KEY"
+  ```
+
+  Review IDs are listed at `https://amerventures.begintech.co/api/reviews`.
+- Spam protection: hidden honeypot field, no links allowed, max 3 reviews per IP per hour.
+- `npm run dev` serves a temporary in-memory version of the API so the form can be tested locally.

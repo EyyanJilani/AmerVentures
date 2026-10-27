@@ -12,10 +12,10 @@ export const LICENSE = {
 // Phone numbers and email are not on the license.
 export const CONTACT = {
   phones: [
-    { display: '+971 50 906 9414', tel: '+971509069414', whatsapp: true },
-    { display: '+971 56 270 8802', tel: '+971562708802' },
+    { display: '+971 56 270 8802', tel: '+971562708802', whatsapp: true },
+    { display: '+971 50 906 9414', tel: '+971509069414' },
   ],
-  whatsapp: '971509069414',
+  whatsapp: '971562708802',
   email: 'info@amerventure.com',
   mapQuery: 'Meydan Grandstand, Meydan Road, Nad Al Sheba, Dubai',
 }
