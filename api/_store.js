@@ -15,7 +15,8 @@ const toReview = (row) => ({
 
 export function supabaseFromEnv(env = process.env) {
   const url = (env.SUPABASE_URL || env.NEXT_PUBLIC_SUPABASE_URL || '').replace(/\/$/, '')
-  const key = env.SUPABASE_SERVICE_ROLE_KEY
+  // Either the new secret key (sb_secret_...) or the legacy service_role JWT.
+  const key = env.SUPABASE_SECRET_KEY || env.SUPABASE_SERVICE_ROLE_KEY
   if (!url || !key) return null
 
   const api = async (path, { method = 'GET', body, prefer } = {}) => {
@@ -23,7 +24,8 @@ export function supabaseFromEnv(env = process.env) {
       method,
       headers: {
         apikey: key,
-        Authorization: `Bearer ${key}`,
+        // Only legacy JWT keys go in Authorization; sb_secret_ keys are sent as apikey alone.
+        ...(key.startsWith('eyJ') ? { Authorization: `Bearer ${key}` } : {}),
         'Content-Type': 'application/json',
         ...(prefer ? { Prefer: prefer } : {}),
       },

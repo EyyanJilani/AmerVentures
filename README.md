@@ -40,7 +40,7 @@ npm run build    # production files in dist/
   1. In Supabase, open **SQL Editor → New query**, paste `supabase/reviews.sql` and click **Run**.
   2. In Supabase, open **Project Settings → API** and copy the **Project URL** and the **service_role** key.
   3. In Vercel, open the project → **Settings → Environment Variables** and add
-     `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (Production, Preview, Development), plus
+     `SUPABASE_URL` and `SUPABASE_SECRET_KEY` (the `sb_secret_...` key; the legacy `SUPABASE_SERVICE_ROLE_KEY` also works) (Production, Preview, Development), plus
      `REVIEWS_ADMIN_KEY` (any long secret). Then **Redeploy**.
 - Delete a review: in Supabase **Table Editor → reviews**, select the row and delete it. Or:
 
