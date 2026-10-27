@@ -34,16 +34,20 @@ npm run build    # production files in dist/
 
 ## Client reviews
 
-- Visitors post reviews from the Home page. They are saved by the Vercel function `api/reviews.js`
-  in an Upstash Redis database and appear on the site straight away.
-- Setup (once): Vercel project → **Storage** → **Create Database** → **Upstash for Redis** → connect it
-  to this project, then redeploy. Vercel adds `KV_REST_API_URL` and `KV_REST_API_TOKEN` automatically.
-- Optional: add an environment variable `REVIEWS_ADMIN_KEY` (any long secret) to be able to delete a review:
+- Visitors post reviews from the Home page. The Vercel function `api/reviews.js` saves them in a
+  Supabase table and they appear on the site straight away.
+- Setup (once):
+  1. In Supabase, open **SQL Editor → New query**, paste `supabase/reviews.sql` and click **Run**.
+  2. In Supabase, open **Project Settings → API** and copy the **Project URL** and the **service_role** key.
+  3. In Vercel, open the project → **Settings → Environment Variables** and add
+     `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (Production, Preview, Development), plus
+     `REVIEWS_ADMIN_KEY` (any long secret). Then **Redeploy**.
+- Delete a review: in Supabase **Table Editor → reviews**, select the row and delete it. Or:
 
   ```bash
   curl -X DELETE "https://amerventures.begintech.co/api/reviews?id=REVIEW_ID" -H "x-admin-key: YOUR_KEY"
   ```
 
-  Review IDs are listed at `https://amerventures.begintech.co/api/reviews`.
-- Spam protection: hidden honeypot field, no links allowed, max 3 reviews per IP per hour.
-- `npm run dev` serves a temporary in-memory version of the API so the form can be tested locally.
+- Spam protection: hidden honeypot field, no links allowed, max 3 reviews per visitor per hour
+  (only a one-way hash of the IP address is stored).
+- `npm run dev` serves an in-memory version of the API so the form can be tested locally.

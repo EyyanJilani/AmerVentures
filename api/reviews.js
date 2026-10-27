@@ -1,11 +1,10 @@
-// Public client reviews, stored in Upstash Redis.
+// Public client reviews, stored in Supabase.
 //   GET    /api/reviews          -> { reviews: [...] } newest first
 //   POST   /api/reviews          -> publish a review { name, rating, service, text }
 //   DELETE /api/reviews?id=...   -> remove a review (header x-admin-key: REVIEWS_ADMIN_KEY)
-import { redisFromEnv } from './_store.js'
+import { createHash } from 'node:crypto'
+import { supabaseFromEnv } from './_store.js'
 
-const KEY = 'reviews'
-const MAX_STORED = 200
 const PER_IP_PER_HOUR = 3
 const SERVICES = ['government', 'clearing', 'attestation', 'verification', 'manpower', 'banking']
 
@@ -25,6 +24,9 @@ export function validate(body) {
   return { review: { name, rating, service, text } }
 }
 
+// Only a one-way hash of the visitor's IP is stored, for rate limiting.
+const hashIp = (ip, salt) => createHash('sha256').update(`${salt}:${ip}`).digest('hex').slice(0, 32)
+
 export function createHandler(getStore, env = process.env) {
   return async function handler(req, res) {
     const store = getStore()
@@ -32,9 +34,8 @@ export function createHandler(getStore, env = process.env) {
 
     try {
       if (req.method === 'GET') {
-        const raw = await store.lrange(KEY, 0, 99)
-        const reviews = raw.map((r) => JSON.parse(r))
-        res.setHeader('Cache-Control', 's-maxage=15, stale-while-revalidate=60')
+        const reviews = await store.list(100)
+        res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=15, stale-while-revalidate=60')
         return res.status(200).json({ reviews })
       }
 
@@ -45,30 +46,21 @@ export function createHandler(getStore, env = process.env) {
         if (error) return res.status(400).json({ error })
 
         const ip = String(req.headers['x-forwarded-for'] || 'unknown').split(',')[0].trim()
-        const rlKey = `rl:reviews:${ip}`
-        const count = await store.incr(rlKey)
-        if (count === 1) await store.expire(rlKey, 3600)
-        if (count > PER_IP_PER_HOUR) return res.status(429).json({ error: 'rate_limited' })
-
-        const saved = {
-          id: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`,
-          ...review,
-          createdAt: new Date().toISOString(),
+        const ipHash = hashIp(ip, env.REVIEWS_ADMIN_KEY || 'amer-venture')
+        const since = new Date(Date.now() - 3600 * 1000).toISOString()
+        if ((await store.countSince(ipHash, since)) >= PER_IP_PER_HOUR) {
+          return res.status(429).json({ error: 'rate_limited' })
         }
-        await store.lpush(KEY, JSON.stringify(saved))
-        await store.ltrim(KEY, 0, MAX_STORED - 1)
+
+        const saved = await store.add(review, ipHash)
         return res.status(201).json({ review: saved })
       }
 
       if (req.method === 'DELETE') {
         const adminKey = env.REVIEWS_ADMIN_KEY
         if (!adminKey || req.headers['x-admin-key'] !== adminKey) return res.status(401).json({ error: 'unauthorized' })
-        const id = clean(req.query?.id)
-        const raw = await store.lrange(KEY, 0, -1)
-        const match = raw.find((r) => JSON.parse(r).id === id)
-        if (!match) return res.status(404).json({ error: 'not_found' })
-        await store.lrem(KEY, 1, match)
-        return res.status(200).json({ ok: true })
+        const removed = await store.remove(clean(req.query?.id))
+        return removed ? res.status(200).json({ ok: true }) : res.status(404).json({ error: 'not_found' })
       }
 
       res.setHeader('Allow', 'GET, POST, DELETE')
@@ -80,4 +72,4 @@ export function createHandler(getStore, env = process.env) {
   }
 }
 
-export default createHandler(() => redisFromEnv())
+export default createHandler(() => supabaseFromEnv())
