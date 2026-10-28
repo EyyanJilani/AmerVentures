@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Star, CircleCheck, Loader2 } from 'lucide-react'
 import { useLang } from '../i18n/LanguageContext'
-import { REVIEWS, SERVICE_KEYS } from '../data/site'
+import { REVIEWS, SERVICE_KEYS, waLink } from '../data/site'
 import Reveal from './Reveal'
 
 const SHOW_FIRST = 6
@@ -70,7 +70,7 @@ function FeedbackForm({ onPosted }) {
   const [hover, setHover] = useState(0)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle') // idle | sending | sent
-  const [serverError, setServerError] = useState('')
+  const [published, setPublished] = useState(false)
 
   const update = (e) => {
     const { name, value } = e.target
@@ -80,7 +80,6 @@ function FeedbackForm({ onPosted }) {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    setServerError('')
     const found = {}
     if (values.name.trim().length < 2) found.name = r.errors.name
     if (!rating) found.rating = r.errors.rating
@@ -89,6 +88,21 @@ function FeedbackForm({ onPosted }) {
     setErrors(found)
     if (Object.keys(found).length) return
 
+    // Send the feedback to our WhatsApp. Opened right away (not after the request) so browsers don't block it.
+    const serviceName = values.service ? t.services[values.service].title : ''
+    const message = [
+      r.waTitle,
+      `${r.waLabels.name}: ${values.name.trim()}`,
+      `${r.waLabels.rating}: ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)} (${rating}/5)`,
+      serviceName ? `${r.waLabels.service}: ${serviceName}` : null,
+      '',
+      values.comment.trim(),
+    ]
+      .filter((line) => line !== null)
+      .join('\n')
+    window.open(waLink(message), '_blank', 'noopener')
+
+    // Also publish it on the website; if that fails, the WhatsApp message has still gone out.
     setStatus('sending')
     try {
       const res = await fetch('/api/reviews', {
@@ -103,17 +117,12 @@ function FeedbackForm({ onPosted }) {
         }),
       })
       const data = await res.json().catch(() => ({}))
-      if (!res.ok) {
-        setStatus('idle')
-        setServerError(res.status === 429 ? r.errors.rate : data.error === 'links' ? r.errors.links : r.errors.server)
-        return
-      }
-      if (data.review) onPosted(data.review)
-      setStatus('sent')
+      if (res.ok && data.review) onPosted(data.review)
+      setPublished(res.ok)
     } catch {
-      setStatus('idle')
-      setServerError(r.errors.server)
+      setPublished(false)
     }
+    setStatus('sent')
   }
 
   const input = (name) =>
@@ -126,7 +135,7 @@ function FeedbackForm({ onPosted }) {
       <div role="status" className="rounded border border-line bg-white p-8">
         <CircleCheck className="h-10 w-10 text-accent-600" strokeWidth={1.5} />
         <h3 className="mt-5 text-2xl font-extrabold">{r.thanksTitle}</h3>
-        <p className="mt-2 text-muted">{r.thanks}</p>
+        <p className="mt-2 text-muted">{published ? r.thanks : r.thanksWa}</p>
         <button
           type="button"
           onClick={() => {
@@ -229,11 +238,6 @@ function FeedbackForm({ onPosted }) {
         aria-hidden="true"
       />
 
-      {serverError && (
-        <p role="alert" className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
-          {serverError}
-        </p>
-      )}
 
       <button
         type="submit"
@@ -243,6 +247,7 @@ function FeedbackForm({ onPosted }) {
         {status === 'sending' && <Loader2 className="h-4 w-4 animate-spin" />}
         {status === 'sending' ? r.sending : r.submit}
       </button>
+      <p className="-mt-2 text-xs text-muted">{r.waNote}</p>
     </form>
   )
 }
